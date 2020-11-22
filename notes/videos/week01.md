@@ -49,6 +49,7 @@
         * Truth table for example
 
 * HDL 
+    * Contains the chips interface as the header and the implementation as the body
     * Begins with a description of the chip
         * In a comment /** ... */
         * Single line comment //
@@ -61,3 +62,7 @@
         * PARTS: ...... }
     * Unlimited "thin out"
         * Can copy a given signal as many times as needed
+
+* HDL Comments
+    * Make sure comment and documantation are there for readability
+    * HDL is static code, we will implement procedural later
