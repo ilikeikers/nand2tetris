@@ -15,3 +15,5 @@
     * Chips are the result
 * The hardware can be abstracted. Thanks electrical engineers. 
 * Primitive gates lead to composite gates
+* Hardware Description Languange (HDL) is used to model these chips
+
