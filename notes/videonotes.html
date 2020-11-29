@@ -1,0 +1,132 @@
+<h1 id="boolean-logic">Boolean Logic</h1>
+<h2 id="unit-11">Unit 1.1</h2>
+<ul>
+<li><p>Commutative Laws</p>
+<ul>
+<li>(x AND y) = (y AND x)</li>
+<li>(x OR y) = (y OR x)</li>
+</ul>
+</li>
+<li><p>Associative Laws</p>
+<ul>
+<li>(x AND(y AND z)) = ((x AND y) AND z)</li>
+<li>(x OR(y OR z)) = ((x OR y) OR z)</li>
+</ul>
+</li>
+<li><p>Distributive Laws</p>
+<ul>
+<li>(x AND(y OR z)) = (x AND y) OR (x AND z)</li>
+<li>(x OR(y AND z)) = (x OR y) AND (x OR z)</li>
+</ul>
+</li>
+<li><p>De Morgan&#39;s Laws</p>
+<ul>
+<li>!(x AND y) = !x OR !y</li>
+<li>!(x OR y) = !x AND !y</li>
+</ul>
+</li>
+</ul>
+<h2 id="unit-12">Unit 1.2</h2>
+<ul>
+<li><p>Function synthesis from a truth table</p>
+<ul>
+<li>Write an expression that produces &#39;1&#39; for each row of the truth table containing a &#39;1&#39; answer</li>
+<li>OR all the expressions together</li>
+</ul>
+</li>
+<li><p>Proof for any function expressed containing AND and NOT</p>
+<ul>
+<li>(x OR y) = !(!x AND !y)</li>
+</ul>
+</li>
+<li><p>NAND</p>
+<ul>
+<li>(x NAND y) = !(x AND y)</li>
+<li>Only NAND Required <ul>
+<li>!x = (x NAND x)</li>
+<li>(x AND y) = !(x NAND y)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="unit-13">Unit 1.3</h2>
+<ul>
+<li>Logic Gates<ul>
+<li>Elementary (NAND, AND, OR...)<ul>
+<li>AND: if (a==1 and b==1) then out=1 else out=0</li>
+<li>OR: if (a==1 or b==1) then out=1 else out=0</li>
+<li>NOT: if (in=0) then out=1 else out=0</li>
+</ul>
+</li>
+<li>Composite (MUX, ADDR...)</li>
+</ul>
+</li>
+</ul>
+<h2 id="unit-14">Unit 1.4</h2>
+<ul>
+<li><p>Designing Chips</p>
+<ul>
+<li>Need a full and complete description of the gate&#39;s behavior<ul>
+<li>Truth table for example</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>HDL </p>
+<ul>
+<li>Contains the chips interface as the header and the implementation as the body</li>
+<li>Begins with a description of the chip<ul>
+<li>In a comment /** ... */</li>
+<li>Single line comment //</li>
+</ul>
+</li>
+<li>Name the chip<ul>
+<li>CHIP ... {</li>
+</ul>
+</li>
+<li>Name the inputs/outputs<ul>
+<li>IN a, b, c...;</li>
+<li>OUT out;</li>
+</ul>
+</li>
+<li>Define the implementation<ul>
+<li>PARTS: ...... }</li>
+</ul>
+</li>
+<li>Unlimited &quot;thin out&quot;<ul>
+<li>Can copy a given signal as many times as needed</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>HDL Comments</p>
+<ul>
+<li>Make sure comment and documantation are there for readability</li>
+<li>HDL is static code, we will implement procedural later</li>
+</ul>
+</li>
+</ul>
+<h2 id="unit-1516">Unit 1.5/1.6</h2>
+<ul>
+<li>Tutorial on HDL</li>
+</ul>
+<h2 id="unit-17">Unit 1.7</h2>
+<ul>
+<li><p>Multiplexor</p>
+<ul>
+<li>Output &#39;a&#39; if &#39;sel&#39;==0 and &#39;b&#39; if &#39;sel&#39;==1</li>
+<li>Other gates can be put before the mux gate to create logic that changes
+based on the desired behavior</li>
+</ul>
+</li>
+<li><p>Demultiplexor</p>
+<ul>
+<li>Takes one input and produces an output on certain channels based on the
+selector</li>
+</ul>
+</li>
+<li><p>Selectors can be set as oscillators for communication networks</p>
+</li>
+</ul>
+

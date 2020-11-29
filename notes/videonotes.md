@@ -66,3 +66,26 @@
 * HDL Comments
     * Make sure comment and documantation are there for readability
     * HDL is static code, we will implement procedural later
+
+## Unit 1.5/1.6
+
+* Tutorial on HDL
+
+## Unit 1.7
+
+* Multiplexor
+    * Output 'a' if 'sel'==0 and 'b' if 'sel'==1
+    * Other gates can be put before the mux gate to create logic that changes
+      based on the desired behavior
+
+* Demultiplexor
+    * Takes one input and produces an output on certain channels based on the
+      selector
+    
+* Selectors can be set as oscillators for communication networks
+
+
+
+
+
+
