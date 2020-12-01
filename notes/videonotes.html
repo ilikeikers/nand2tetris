@@ -129,4 +129,76 @@ selector</li>
 <li><p>Selectors can be set as oscillators for communication networks</p>
 </li>
 </ul>
+<h1 id="boolean-arithmetic-and-the-alu">Boolean Arithmetic and the ALU</h1>
+<h2 id="unit-21">Unit 2.1</h2>
+<ul>
+<li>Converting binary to decimal: 2^n + 2^n-1 ... 2^0 </li>
+<li>Converting decimal to binary: start with the largest power of 2 to fit in the
+number and work your way down</li>
+</ul>
+<h2 id="unit-22">Unit 2.2</h2>
+<ul>
+<li>Adders will contain a carry bit and a sum bit to be implimented</li>
+</ul>
+<h2 id="unit-23">Unit 2.3</h2>
+<ul>
+<li>With n bits, can represent the positive integers in the range:<ul>
+<li>0...2^(n)-1</li>
+<li>Represent Negative number &#39;-x&#39; using the positive number 2^(n)-x<ul>
+<li>Using this, positive numbers in range: 0...2^(n-1)-1</li>
+<li>Negative numbers in range: -1...-2^(n-1)</li>
+<li>Shortcut to find complement: flip all the bits and add one</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="unit-24">Unit 2.4</h1>
+<ul>
+<li>Hack ALU:<ul>
+<li>Two 16-bit data inputs (x, y)</li>
+<li>Single 16-bit output</li>
+<li>Output determined by six control bits (zx, nx, zy, ny, f, no)</li>
+<li>Two 1-bit control outputs (zr, ng)<ul>
+<li>if out == 0 then zr=1, else zr=0</li>
+<li>if out &lt; 0 then ng=1, else ng=0</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Simplicity is the ultimate sophistication</li>
+</ul>
+<h1 id="unit-25">Unit 2.5</h1>
+<ul>
+<li><p>Half-Adder</p>
+<ul>
+<li>Takes two bits, adds them up and outputs a carry and sum bit</li>
+<li>Sum truth table == Xor truth table</li>
+<li>Carry truth table == And truth table</li>
+</ul>
+</li>
+<li><p>Full-Adder</p>
+<ul>
+<li>Sums up three bits, same Carry and Sum output</li>
+<li>Can be built from two Half-Adders</li>
+</ul>
+</li>
+<li><p>16-Bit Adder</p>
+<ul>
+<li>Sequence of 16 Full-Adders</li>
+</ul>
+</li>
+<li><p>16-Bit Incrementer</p>
+<ul>
+<li>Takes in one input and adds 1 to it</li>
+<li>The single-bit 0 and 1 values are represented in HDL as false and true</li>
+</ul>
+</li>
+<li><p>ALU</p>
+<ul>
+<li>Add16 and various Project 1 chips to use</li>
+<li>Can be built with less than 20 lines of HDL code</li>
+</ul>
+</li>
+</ul>
 

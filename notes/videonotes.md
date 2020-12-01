@@ -84,7 +84,60 @@
     
 * Selectors can be set as oscillators for communication networks
 
+# Boolean Arithmetic and the ALU
 
+## Unit 2.1
+
+* Converting binary to decimal: 2^n + 2^n-1 ... 2^0 
+* Converting decimal to binary: start with the largest power of 2 to fit in the
+  number and work your way down
+
+## Unit 2.2
+
+* Adders will contain a carry bit and a sum bit to be implimented
+
+## Unit 2.3
+
+* With n bits, can represent the positive integers in the range:
+    * 0...2^(n)-1
+    * Represent Negative number '-x' using the positive number 2^(n)-x
+        * Using this, positive numbers in range: 0...2^(n-1)-1
+        * Negative numbers in range: -1...-2^(n-1)
+        * Shortcut to find complement: flip all the bits and add one
+
+# Unit 2.4
+
+* Hack ALU:
+    * Two 16-bit data inputs (x, y)
+    * Single 16-bit output
+    * Output determined by six control bits (zx, nx, zy, ny, f, no)
+    * Two 1-bit control outputs (zr, ng)
+        * if out == 0 then zr=1, else zr=0
+        * if out < 0 then ng=1, else ng=0
+* Simplicity is the ultimate sophistication
+
+# Unit 2.5
+
+* Half-Adder
+    * Takes two bits, adds them up and outputs a carry and sum bit
+    * Sum truth table == Xor truth table
+    * Carry truth table == And truth table
+
+* Full-Adder
+    * Sums up three bits, same Carry and Sum output
+    * Can be built from two Half-Adders
+
+* 16-Bit Adder
+    * Sequence of 16 Full-Adders
+
+* 16-Bit Incrementer
+    * Takes in one input and adds 1 to it
+    * The single-bit 0 and 1 values are represented in HDL as false and true
+
+* ALU
+    * Add16 and various Project 1 chips to use
+    * Can be built with less than 20 lines of HDL code
+      
 
 
 

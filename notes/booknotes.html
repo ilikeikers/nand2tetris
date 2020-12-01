@@ -14,5 +14,37 @@
 </li>
 <li>The hardware can be abstracted. Thanks electrical engineers. </li>
 <li>Primitive gates lead to composite gates</li>
+<li>Hardware Description Languange (HDL) is used to model these chips</li>
+</ul>
+<h1 id="chapter-2">Chapter 2:</h1>
+<ul>
+<li>Most operations performed by digital computers can be reduced to elementary
+additions of binary numbers</li>
+<li>(10011)_two = 1<em>2^4 + 0</em>2^3 + 0<em>2^2 + 1</em>2^1 + 1*2^0 = 19</li>
+<li>(x_(n)x_(n-1)...x_0)_b = sum(n,i=0) x_i*b^i</li>
+<li>Can add bits from right to left just like decimal additions</li>
+<li>A binary system with n digits can generate a set of 2^n different bit
+patterns</li>
+<li>The 2&#39;s Complement Method (radix complement) is used to represent signed
+binary numbers<ul>
+<li>complement = 2^n - x (if x != 0) or 0 (otherwise)</li>
+<li>5 bit representation of -2:<ul>
+<li>minus(00010)_two = 2^5-(00010)_two = (32)_ten - (2)_ten = (30)_ten =
+(11110)_two<ul>
+<li>(00010)_two + (11110)_two = (00000)_two</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Can code a total of 2^n signed numbers<ul>
+<li>Max: 2^(n-1)-1</li>
+<li>Min: -2^(n-1)</li>
+</ul>
+</li>
+<li>All positive numbers begin with a 0</li>
+<li>All negative numbers begin with a 1</li>
+<li>Shortcut: flip all of the bits of x and add 1 to the result</li>
+</ul>
+</li>
 </ul>
 
