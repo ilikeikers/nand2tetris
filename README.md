@@ -1,5 +1,5 @@
 # README
 
-Project following the nand2tetris course.
+Documenting projects following following the nand2tetris course.
 
 https://www.nand2tetris.org
