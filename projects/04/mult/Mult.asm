@@ -9,4 +9,27 @@
 // This program only needs to handle arguments that satisfy
 // R0 >= 0, R1 >= 0, and R0*R1 < 32768.
 
-// Put your code here.
+// Ensures that R2 is set to zero to start
+  @R2
+  M=0
+(LOOP)
+  @R0
+  D=M
+  @END
+  D;JLE
+
+  @R1
+  D=M
+  @R2
+  M=D+M
+  @1
+  D=A
+  @R0
+  M=M-D
+
+  @LOOP
+  0;JMP
+
+(END)
+  @END
+  0;JMP
