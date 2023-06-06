@@ -10,10 +10,8 @@ new_filename = filename_split + '1.hack'
 with open(filename, 'r') as asm:
     raw_contents = asm.readlines()
 
-def instruction_cleanup(raw_contents):
-    """ Returns a commands_list that has all the raw commands without any comments or linebreaks
-        Also returns the completed symbol table at the end
-        """
+def no_symbol_cleanup(filename):
+    # Returns a commands_list that has all the raw commands without any comments or linebreaks
     symbol_table = {
                 'SP' : '0',
                 'LCL' : '1',
@@ -41,7 +39,7 @@ def instruction_cleanup(raw_contents):
             }
 
     comment_free = []
-    for line in raw_contents:
+    for line in filename:
         comment_free.append(re.sub("//.*$\n", "", line))
 
     newline_free = []
@@ -49,10 +47,9 @@ def instruction_cleanup(raw_contents):
         newline_free.append(re.sub("\n", "", line))
 
     commands_list = []
-    added = list(symbol_table.keys())
+    added = []
     command_location = 0
     for line in newline_free:
-    # Builds the symbol table for any loop calls '(Xxx)'
         line = line.replace(' ', '')
         addline = line.replace('@', '').replace('(','').replace(')','')
         if len(line) != 0:
@@ -61,26 +58,22 @@ def instruction_cleanup(raw_contents):
                 symbol_table_value = str(command_location)
                 symbol_table[key] = symbol_table_value
                 added.append(key)
-            elif '(' not in line:
-                commands_list.append(line)
-            if '(' not in line:
-                command_location += 1
-
-    instruction_list = []
-    memory_location = 16
-    for line in commands_list:
-    # Builds the symbol table for variables
-        line = line.replace(' ', '')
-        addline = line.replace('@', '').replace('(','').replace(')','')
-        if len(line) != 0:
-            if re.match('@[^0-9]+.*', line) and addline not in added:
+            elif re.match('@[^0-9]+.*', line) and addline not in added:
                 _, key = line.split('@')
-                symbol_table_value = str(memory_location)
+                symbol_table_value = str(command_location)
                 symbol_table[key] = symbol_table_value
                 added.append(key)
-                instruction_list.append(line)
-                memory_location += 1
-            elif re.match('@[^0-9]+.*', line) and addline in added:
+                commands_list.append(line)
+            elif '(' not in line:
+                commands_list.append(line)
+            #if '(' not in line:
+            #    command_location += 1
+        print(commands_list)
+
+    instruction_list = []
+    for line in commands_list:
+        if len(line) != 0:
+            if re.match('@[^0-9]+.*', line):
                 _, key = line.split('@')
                 instruction = '@' + symbol_table.get(key)
                 instruction_list.append(instruction)
@@ -92,24 +85,28 @@ def instruction_cleanup(raw_contents):
         line = line.replace(' ', '')
         clean_instruction_list.append(line)
 
+    print(newline_free, clean_instruction_list, symbol_table)
     return clean_instruction_list, symbol_table
 
 def a_command_translate(a_command, symbol_table):
     # Gets the value of the A-Command and translates it to its padded binary equivalent
     if re.match('@[^0-9]+.*', a_command):
         _, key = a_command.split('@')
+        print(a_command, key)
         instruction = symbol_table.get(key)
+        print(instruction)
         value_int = int(instruction)
-        bin_string = f'{value_int:016b}'
+        bin_command = f'{value_int:016b}'
     else:
         _, constant = a_command.split('@')
         constant_int = int(constant)
-        bin_string = f'{constant_int:016b}'
+        bin_command = f'{constant_int:016b}'
 
-    return bin_string
+    return bin_command
 
 def c_command_translate(c_command):
     # Gets the value of the C-Command and translates it to its padded binary equivalent
+    print(c_command)
     bin_string = '111'
     jump_bits_translate = {
                 'null' : '000',
@@ -202,6 +199,7 @@ def c_command_translate(c_command):
         comp_bin = comp_bits_translate.get(comp_bits)
         bin_string = bin_string + comp_bin + dest_bin + jump_bin
 
+    print(bin_string)
     return bin_string
 
 def build_binary_list(commands_list, symbol_table):
@@ -216,9 +214,9 @@ def build_binary_list(commands_list, symbol_table):
 
     return bin_commandlist
 
-commands_list, symbol_table = instruction_cleanup(raw_contents)
-bin_commandslist = build_binary_list(commands_list, symbol_table)
-hack_binary = '\n'.join(bin_commandslist)
+commands_list, symbol_table = no_symbol_cleanup(raw_contents)
+bin_commandlist = build_binary_list(commands_list, symbol_table)
+hack_binary = '\n'.join(bin_commandlist)
 
 with open(new_filename, 'w') as hack:
     hack.write(hack_binary)
