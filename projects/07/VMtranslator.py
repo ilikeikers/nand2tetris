@@ -12,8 +12,6 @@ with open(filename, 'r') as raw_vm:
     raw_contents = raw_vm.readlines()
 
 def instruction_cleanup(raw_contents):
-    """ Returns an instruction list that has all the raw commands without any comments or linebreaks
-        """
     comment_free = []
     for line in raw_contents:
         comment_free.append(re.sub("//.*$\n", "", line))
@@ -52,7 +50,7 @@ def translate_arithmetic_command(instruction, command_count):
                      'D=M',
                      '@SP',
                      'AM=M-1',
-                     'D=M-D', # might need to change M and D order
+                     'D=M-D',
                      '@SP',
                      'A=M',
                      'M=D',
@@ -272,7 +270,6 @@ def translate_memory_segment(command_type, memory_segment, value):
         elif command_type == 'push':
             memory_destination = ['@THAT', 'D=M']
         memory_command = memory_destination
-
 
     return memory_command
 
